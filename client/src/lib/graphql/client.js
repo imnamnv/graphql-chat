@@ -25,6 +25,7 @@ const authLink = new ApolloLink((operation, forward) => {
 const wsLink = new GraphQLWsLink(
   createWsClient({
     url: "ws://localhost:9000/graphql",
+    connectionParams: () => ({ accessToken: getAccessToken() }), // make token is not undefined by passing a function. instead of set a object directly
   })
 );
 
